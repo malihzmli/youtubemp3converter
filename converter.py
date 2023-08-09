@@ -5,13 +5,9 @@ import time
 def videoindirme(link):
     try:
         yt= YouTube(link)
-        print(1)
         download = yt.streams.get_lowest_resolution()
-        print(2)
         path=download.get_file_path()
-        print(3)
         download.download()
-        print(4)
         print(path+" "+'indirildi')
         
         
@@ -24,12 +20,11 @@ def videoindirme(link):
             
         except:
             os.remove(path)
+        except:
+            
             print(path+" "+' donusurken bir hata ile karsilasildi')
     except:
         print(link+" "+'indirilirken  hata ile karsilasildi')
-    
-   
-    
 file =open('songs.txt','r')
 for i in file.readlines():
     videoindirme(i)
